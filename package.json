@@ -1,0 +1,51 @@
+{
+  "name": "proyectofinal",
+  "version": "1.0.0",
+  "description": "Proyecto final utn programacion",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon ./index.js",
+    "start": "concurrently \"npm run dev\" \"npm run watch \"",
+    "watch": "webpack --watch --mode development"
+  },
+  "author": "Ivan Gauna",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.4.0",
+    "bcrypt": "^5.1.0",
+    "body-parser": "^1.20.2",
+    "concurrently": "^8.2.2",
+    "connect-flash": "^0.1.1",
+    "connect-mongo": "^5.0.0",
+    "cookie-parser": "^1.4.6",
+    "crypto": "^1.0.1",
+    "dotenv": "^16.5.0",
+    "express": "^4.18.2",
+    "express-session": "^1.18.1",
+    "express-validator": "^5.3.0",
+    "googleapis": "^129.0.0",
+    "html-to-text": "^9.0.5",
+    "juice": "^10.0.0",
+    "mercadopago": "^2.8.0",
+    "method-override": "^3.0.0",
+    "mongoose": "^7.1.0",
+    "multer": "^1.4.5-lts.1",
+    "ngrok": "^5.0.0-beta.2",
+    "nodemailer": "^6.9.15",
+    "passport": "^0.6.0",
+    "passport-local": "^1.0.0",
+    "pdfkit": "^0.14.0",
+    "pdfkit-construct": "^1.2.3",
+    "pug": "^3.0.2",
+    "sweetalert2": "^11.7.20",
+    "util": "^0.12.5"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.25.9",
+    "@babel/preset-env": "^7.25.9",
+    "babel-loader": "^9.2.1",
+    "nodemon": "^2.0.22",
+    "webpack": "^5.95.0",
+    "webpack-cli": "^5.1.4"
+  }
+}

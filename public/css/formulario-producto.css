@@ -1,0 +1,81 @@
+/* CSS Encapsulado para el Formulario de Crear Producto */
+.formulario-producto {
+    max-width: 600px;
+    margin-top: 20px;
+    margin:  auto;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0);
+    border-radius: 8px;
+
+}
+
+.formulario-producto h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+}
+
+.formulario-producto .campo {
+    margin-bottom: 15px;
+}
+
+.formulario-producto label {
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+.formulario-producto input[type="text"],
+.formulario-producto input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.formulario-producto input[type="text"]:focus,
+.formulario-producto input[type="number"]:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.formulario-producto .campo.enviar {
+    text-align: center;
+}
+
+.formulario-producto .boton {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.formulario-producto .boton:hover {
+    background-color: #0056b3;
+}
+
+.formulario-producto .alertas {
+    margin-bottom: 15px;
+    padding: 10px;
+    background-color: #f8d7da;
+    border: 1px solid #f5c2c7;
+    color: #842029;
+    border-radius: 4px;
+}
+
+.formulario-producto .alerta {
+    margin: 5px 0;
+}
+
+.formulario-producto .alerta.error {
+    font-size: 14px;
+    font-weight: bold;
+}

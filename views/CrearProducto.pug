@@ -1,0 +1,52 @@
+extends layout
+
+block contenido
+  link(rel='stylesheet', href='/css/formulario-producto.css')
+  .contenedor.formulario-producto
+    h2 Crear Nuevo Producto
+    
+    if mensajes.error
+      .alertas
+        each error in mensajes.error
+          .alerta.error= error
+
+    form.formulario(action="/Producto/Crear" method="POST" enctype="multipart/form-data")
+            .campo
+                label(for="Titulo") Título del Producto
+                input#Titulo(
+                    type="text" 
+                    name="Titulo" 
+                    placeholder="Nombre del producto" 
+                    required
+                )
+
+            .campo
+                label(for="Precio") Precio
+                input#Precio(
+                    type="number" 
+                    name="Precio" 
+                    step="0.01" 
+                    placeholder="Precio del producto" 
+                    required
+                )
+
+            .campo
+                label(for="Cantidad") Cantidad
+                input#Cantidad(
+                    type="number" 
+                    name="Cantidad" 
+                    placeholder="Stock del producto"
+                )
+
+            .campo
+                label(for="Imagen") Imagen del Producto
+                input#Imagen(
+                    type="file" 
+                    name="Imagen" 
+                    accept="image/*"
+                )
+
+            .campo.enviar
+                input.boton(type="submit" value="Crear Producto")
+
+

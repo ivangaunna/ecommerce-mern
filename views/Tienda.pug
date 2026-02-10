@@ -1,0 +1,23 @@
+extends layout
+
+block contenido
+        
+        main.Tienda
+            h2 Nuestros Productos
+            .Contenedor.ContenedorProductos
+                if(Productos.length)
+                    each Producto in Productos
+                        .Productos(data-id=`${Producto.id}`)
+                            .ImgProducto
+                                a.OjoProducto(href=`/Producto/Editar/${Producto._id}`)
+                                    i.fa.fa-eye
+                                a(href=``) 
+                                    
+                                    img.ImagenProducto(src=Producto.Imagen alt="Imagen del producto")
+
+                            .ContenidoProducto
+                                p.ProductoNombre= Producto.Titulo
+                                p.PrecioProducto $
+                                    span= Producto.Precio
+                                button.Boton.BtnProductos(name='BtnAccion' type='submit' value='Agregar' href='#')
+                                    span.span Agregar al Carrito

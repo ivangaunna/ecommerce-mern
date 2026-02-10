@@ -1,0 +1,44 @@
+extends layout
+
+block contenido
+  section.MiCuenta 
+    h2=`Editar  ${Producto.Titulo}`
+    
+    // Formulario principal para editar producto
+    form.default-form(method="POST" action=`/Producto/Editar/${Producto._id}` enctype="multipart/form-data")
+    
+        div.Campo 
+            label(for="Nombre") Nombre:
+            input(type="text" name="Titulo" placeholder="Indica el nombre del celular" value=`${Producto.Titulo}`) 
+        div.Campo 
+            label(for="text") Precio:
+            input(type="text" name="Precio" placeholder="Valor del celular" value=`${Producto.Precio}`)
+
+        div.Campo
+            label(for="Imagen") Imagen del Producto:
+            input(type="file" name="Imagen" accept="image/*")
+
+        
+        .Campo.left
+            button.Boton(name='BtnCrears' type='submit' value='Actualizar Datos')
+                span Actualizar Datos
+
+  // Formulario para eliminar producto
+  .contenedor.formulario-producto
+    
+    if mensajes.error
+      .alertas
+        each error in mensajes.error
+          .alerta.error= error
+
+    // Botón de eliminación
+    form.formulario(action=`/Producto/Eliminar/${Producto._id}?_method=DELETE` method="POST")
+      .campo.eliminar
+        input.boton.boton-eliminar(type="submit" value="Eliminar Producto")
+
+  script.
+    document.querySelector('.boton-eliminar').addEventListener('click', function(e) {
+      if (!confirm('¿Estás seguro de que quieres eliminar este producto?')) {
+        e.preventDefault();
+      }
+    });
