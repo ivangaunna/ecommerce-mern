@@ -1,1149 +1,1878 @@
-body{
-    margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgb(19, 19, 19) 100%, rgb(0, 0, 0) 100%);
+:root {
+  --bg: #f8fafc;
+  --bg-surface: #ffffff;
+  --bg-soft: #f1f5f9;
+  --text: #0f172a;
+  --text-muted: #64748b;
+  --text-soft: #475569;
+  --primary: #f97316;
+  --primary-dark: #ea580c;
+  --primary-light: #fff7ed;
+  --accent: #0ea5e9;
+  --border: rgba(15, 23, 42, 0.10);
+  --shadow: 0 4px 20px rgba(15, 23, 42, 0.08);
+  --shadow-lg: 0 12px 40px rgba(15, 23, 42, 0.12);
+  --shadow-orange: 0 8px 28px rgba(249, 115, 22, 0.28);
 }
 
-/*Globales*/
-.Invisible{
-    display: none !important;
+* {
+  box-sizing: border-box;
 }
-a{
-    text-decoration: none;
+
+html {
+  scroll-behavior: smooth;
 }
-li{
-    list-style: none;
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--text);
+  font-family: 'Poppins', 'Inter', sans-serif;
+  background: var(--bg);
 }
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
 .Contenedor {
-    width: 90%;
-    margin: 0 auto;
+  width: min(1140px, calc(100% - 2rem));
+  margin: 0 auto;
 }
-img{
-    width: 100%;
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  color: var(--text);
 }
-h2{
-    text-align: center;
-    font-size: 3rem;
+
+h2 {
+  font-size: clamp(2rem, 2.5vw, 3rem);
 }
+
 .Seccion {
-    margin-top: 10rem;
+  padding: 5rem 0;
 }
 
-.Visible {
-    transform: translateX(0)!important;
+/* Alertas */
+.Alertas {
+  width: min(1140px, calc(100% - 2rem));
+  margin: 1.5rem auto;
 }
 
-
-
-/*Formulario Default*/
-form h3{
-    color: white;
+.alerta {
+  border-radius: 0.85rem;
+  padding: 1rem 1.5rem;
+  margin-bottom: 1rem;
+  background: #fff1f2;
+  border: 1px solid #fecdd3;
 }
-.CrearCuenta {
-    margin-bottom: 5rem;
+
+.alerta p {
+  margin: 0;
+  color: #be123c;
+  font-size: 0.95rem;
+}
+
+/* Botones */
+.Boton,
+.BotonCarrito,
+.boton,
+button {
+  border: none;
+  border-radius: 999px;
+  padding: 0.85rem 1.8rem;
+  background: var(--primary);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.Boton:hover,
+.BotonCarrito:hover,
+.boton:hover,
+button:hover {
+  transform: translateY(-2px);
+  background: var(--primary-dark);
+  box-shadow: var(--shadow-orange);
+}
+
+.Boton span {
+  color: #ffffff;
+}
+
+/* ─── HEADER ─── */
+.Header {
+  position: relative;
+  z-index: 10;
+}
+
+.HeaderTop {
+  background: var(--primary);
+  color: #ffffff;
+}
+
+.HeaderTopContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.55rem 0;
+}
+
+.TopInfo {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: #ffffff;
+}
+
+.TopLinks {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.TopLinks a {
+  color: #ffffff;
+  font-size: 0.82rem;
+  font-weight: 500;
+  opacity: 0.88;
+  transition: opacity 0.2s;
+}
+
+.TopLinks a:hover {
+  opacity: 1;
+}
+
+.HeaderMain {
+  background: #ffffff;
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 2px 12px rgba(15, 23, 42, 0.06);
+}
+
+.HeaderMain:not(.Index) {
+  background: #ffffff;
+}
+
+/* Hero (reemplaza la imagen de fondo) */
+.Index {
+  background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 55%, #fde68a 100%);
+  position: relative;
+  overflow: hidden;
+  border-bottom: none;
+  box-shadow: none;
+}
+
+.Index::before {
+  content: '';
+  position: absolute;
+  top: -40%;
+  right: -15%;
+  width: 650px;
+  height: 650px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(249, 115, 22, 0.18) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.Index::after {
+  content: '';
+  position: absolute;
+  bottom: -30%;
+  left: -8%;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(14, 165, 233, 0.12) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.ContenedorHeader {
+  position: relative;
+  z-index: 1;
+  padding: 1.5rem 1rem 3rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.Brand a {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  text-decoration: none;
+}
+
+.Brand {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.Brand h1 {
+  font-size: clamp(1.6rem, 2vw, 2.4rem);
+  font-weight: 800;
+  letter-spacing: 0.2rem;
+  color: var(--text);
+}
+
+.logo-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: var(--primary);
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 1.15rem;
+  flex-shrink: 0;
+}
+
+.SearchBar {
+  flex: 1;
+  max-width: 520px;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.SearchBar input {
+  width: 100%;
+  padding: 0.85rem 1.1rem;
+  border-radius: 999px;
+  border: 2px solid var(--border);
+  background: #ffffff;
+  color: var(--text);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.SearchBar input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(249, 115, 22, 0.10);
+}
+
+.SearchBar button {
+  min-width: 3.6rem;
+  border-radius: 999px;
+  padding: 0.7rem 1.1rem;
+  background: var(--primary);
+  color: #ffffff;
+  display: grid;
+  place-items: center;
+}
+
+.SearchBar button:hover {
+  background: var(--primary-dark);
+  box-shadow: var(--shadow-orange);
+}
+
+.Barra {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 0;
+}
+
+.Barra h1 {
+  font-size: clamp(1.4rem, 2vw, 2rem);
+  font-weight: 800;
+  letter-spacing: 0.2rem;
+  text-transform: uppercase;
+  color: var(--text);
+}
+
+.MenuNavegacion {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Nav en hero */
+.HeaderMain.Index .menuLink {
+  color: var(--text);
+  background: rgba(249, 115, 22, 0.08);
+  border-color: rgba(249, 115, 22, 0.22);
+}
+
+.HeaderMain.Index .menuLink:hover {
+  background: var(--primary);
+  color: #ffffff;
+  border-color: var(--primary);
+}
+
+.HeaderMain.Index .Brand h1 {
+  color: var(--text);
+}
+
+.menuLink {
+  display: inline-block;
+  color: var(--text-soft);
+  font-size: 0.88rem;
+  font-weight: 600;
+  padding: 0.55rem 1.1rem;
+  background: transparent;
+  border: 1.5px solid var(--border);
+  border-radius: 999px;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.menuLink:hover {
+  color: #ffffff;
+  background: var(--primary);
+  border-color: var(--primary);
+}
+
+@media (max-width: 840px) {
+  .HeaderTopContainer {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+  }
+
+  .ContenedorHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .SearchBar {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .TopInfo,
+  .TopLinks {
+    justify-content: center;
+  }
+
+  .Barra {
+    width: 100%;
+  }
+}
+
+/* Título hero */
+.Titulo {
+  font-size: clamp(2.8rem, 6vw, 5rem);
+  max-width: 720px;
+  line-height: 1;
+  margin: 3.5rem 0 1.5rem;
+  text-transform: uppercase;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  color: var(--text);
+}
+
+/* Footer */
+footer {
+  padding: 2.5rem 0;
+  text-align: center;
+  background: var(--text);
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 0.88rem;
+  letter-spacing: 0.01em;
+  margin-top: 5rem;
+}
+
+/* ─── PANEL MINI CARRITO (solo el del header) ─── */
+.Header .Carrito {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 380px;
+  max-width: 100vw;
+  height: 100vh;
+  background: #ffffff;
+  border-left: 1px solid var(--border);
+  box-shadow: -8px 0 40px rgba(15, 23, 42, 0.12);
+  z-index: 999;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.Header .Carrito.Visible {
+  display: flex;
+}
+
+.CerrarCarrito {
+  align-self: flex-end;
+  margin: 1.25rem 1.25rem 0;
+  font-size: 1.4rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.CerrarCarrito:hover {
+  color: var(--primary);
+}
+
+.CarritoContenido {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.ProductosCarrito {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.85rem;
+  background: var(--bg-soft);
+  border-radius: 0.85rem;
+  border: 1px solid var(--border);
+}
+
+.ProductosCarrito .Imagen {
+  width: 4rem;
+  height: 4rem;
+  object-fit: contain;
+  border-radius: 0.5rem;
+  background: #ffffff;
+  flex-shrink: 0;
+}
+
+.ProductosCarrito h3 {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0 0 0.2rem;
+}
+
+.ProductosCarrito .PrecioProducto {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin: 0;
+}
+
+.ProductosCarrito .CantidadCarrito {
+  width: 3.5rem;
+  padding: 0.3rem 0.5rem;
+  border: 1.5px solid var(--border);
+  border-radius: 0.5rem;
+  font-size: 0.85rem;
+  text-align: center;
+  background: #fff;
+  color: var(--text);
+}
+
+.ProductosCarrito .EliminarProducto {
+  margin-left: auto;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  transition: color 0.2s;
+}
+
+.ProductosCarrito .EliminarProducto:hover {
+  color: #dc2626;
+}
+
+.CarritoTotal {
+  padding: 1rem 1.25rem 0.5rem;
+  border-top: 1px solid var(--border);
+}
+
+.CarritoTotal .SubTotal {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0;
+}
+
+.VerCarritoDiv {
+  padding: 1rem 1.25rem 1.5rem;
+}
+
+.verCarrito {
+  display: block;
+  text-align: center;
+  background: var(--primary);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 0.85rem;
+  border-radius: 999px;
+  transition: background 0.2s, box-shadow 0.2s;
+}
+
+.verCarrito:hover {
+  background: var(--primary-dark);
+  box-shadow: var(--shadow-orange);
+}
+
+@media (min-width: 1024px) {
+  .ContenedorHeader {
+    padding: 2rem 1rem 4.5rem;
+  }
+}
+
+/* ─── SOBRE NOSOTROS ─── */
+.SeccionNosotros {
+  padding-top: 5rem;
+}
+
+.ContenedorNosotros {
+  display: grid;
+  gap: 3rem;
+}
+
+.ImagenesNosotros {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.ImagenesNosotros img {
+  border-radius: 1.5rem;
+  box-shadow: var(--shadow-lg);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.ImagenesNosotros img:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 60px rgba(15, 23, 42, 0.16);
+}
+
+.SobreNosotros {
+  display: grid;
+  place-content: center;
+  padding: 2.5rem;
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: 2rem;
+  box-shadow: var(--shadow);
+}
+
+.SobreNosotros h2 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 1.25rem;
+  color: var(--text);
+}
+
+.SobreNosotros h2 span {
+  color: var(--primary);
+}
+
+.SobreNosotros p {
+  color: var(--text-muted);
+  line-height: 1.9;
+  font-size: 1rem;
+}
+
+@media (min-width: 1024px) {
+  .ContenedorNosotros {
+    grid-template-columns: 1.1fr 0.9fr;
+  }
+}
+
+/* ─── PRODUCTOS ─── */
+.Celulares {
+  background: var(--bg-soft);
+}
+
+.Celulares h2,
+.Galeria h2,
+.Info h2 {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  color: var(--text);
+}
+
+.ContenedorProductos {
+  display: grid;
+  gap: 2rem;
+}
+
+.Producto {
+  border-radius: 1.5rem;
+  overflow: hidden;
+  background: #ffffff;
+  border: 1.5px solid var(--border);
+  box-shadow: var(--shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.Producto:hover {
+  transform: translateY(-8px);
+  border-color: var(--primary);
+  box-shadow: 0 16px 48px rgba(249, 115, 22, 0.16);
+}
+
+.Producto .Imagen {
+  overflow: hidden;
+  position: relative;
+}
+
+.Producto img {
+  width: 100%;
+  height: 20rem;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.Producto:hover img {
+  transform: scale(1.04);
+}
+
+.Producto .Imagen::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 55%, rgba(0, 0, 0, 0.10) 100%);
+}
+
+.Producto h3 {
+  padding: 1.2rem 1.4rem 0.4rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.Producto p {
+  padding: 0 1.4rem 1.4rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  font-size: 0.92rem;
+}
+
+@media (min-width: 1024px) {
+  .ContenedorProductos {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* ─── GALERÍA ─── */
+.ContenedorImagenes {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.ImgGal,
+.ImagenGal {
+  border-radius: 1.25rem;
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  box-shadow: var(--shadow);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.ImgGal:hover,
+.ImagenGal:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: var(--shadow-lg);
+}
+
+@media (min-width: 1024px) {
+  .ContenedorImagenes {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* ─── SECCIÓN PARALLAX (sin imagen, gradiente naranja) ─── */
+.ContenedorPantalla {
+  position: relative;
+  min-height: 26rem;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, var(--primary) 0%, #fb923c 45%, #fbbf24 100%);
+  overflow: hidden;
+}
+
+.ContenedorPantalla::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -10%;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  pointer-events: none;
+}
+
+.ContenedorPantalla::after {
+  content: '';
+  position: absolute;
+  bottom: -40%;
+  left: -5%;
+  width: 360px;
+  height: 360px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+  pointer-events: none;
+}
+
+.BackgroundPantalla {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  min-height: 26rem;
+}
+
+.ContenedorTexto {
+  text-align: center;
+  padding: 2rem;
+}
+
+.ContenedorTexto h2 {
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  color: #ffffff;
+  font-weight: 800;
+  line-height: 1.1;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* ─── INFORMACIÓN ─── */
+.ContInfoTortas {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.InformacionDiv {
+  padding: 2rem 1.5rem;
+  border-radius: 1.5rem;
+  background: #ffffff;
+  border: 1.5px solid var(--border);
+  box-shadow: var(--shadow);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.InformacionDiv:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 40px rgba(249, 115, 22, 0.14);
+  border-color: var(--primary);
+}
+
+.InformacionDiv p {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text);
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  line-height: 1.7;
+}
+
+@media (min-width: 1024px) {
+  .ContInfoTortas {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* ─── FORMULARIOS Y PÁGINAS SECUNDARIAS ─── */
+.DireccionValor,
+.OpcionesCuenta,
+.formulario-producto,
+.default-form {
+  background: #ffffff;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+
+.default-form,
+.OpcionesCuenta,
+.Direcciones,
+.formulario-producto {
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: 1.5rem;
+  box-shadow: var(--shadow);
 }
 
 .default-form {
-    background-color: rgba(0, 0, 0, 0);
-    padding-top: 5rem;
-    padding-bottom: 0;
-    border-radius: 2.5rem;
-    width: 90%;
-    margin: 0 auto;
+  padding: 3rem 2rem;
 }
 
 .TipoDeFormulario {
-    text-align: center;
-    font-size: 3rem;
-    padding: 2rem;
+  font-size: 2rem;
+  font-weight: 800;
+  text-align: center;
+  padding-bottom: 1rem;
+  color: var(--text);
 }
 
 .Campo {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 2rem 0rem;
-    flex-direction: column;
-}
-
-.Campo Input {
-    width: 80%;
-    font-size: 1.5rem;
-    border: none;
-    border-radius: 5px;
-    padding: 5px;
+  display: grid;
+  gap: 0.5rem;
+  margin: 1.25rem 0;
 }
 
 .Campo label {
-    font-size: 2rem;
-    padding: 1rem;
-    color:white;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-soft);
 }
 
-.left {
-    justify-content: flex-end;
+.Campo input,
+.Campo textarea,
+.Campo select {
+  width: 100%;
+  padding: 0.85rem 1.1rem;
+  border-radius: 0.75rem;
+  border: 2px solid var(--border);
+  background: var(--bg-soft);
+  color: var(--text);
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
 }
 
-.Acciones a {
-    font-size: 1.5rem;
-    color: white;
+.Campo input:focus,
+.Campo textarea:focus,
+.Campo select:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(249, 115, 22, 0.10);
+  background: #ffffff;
 }
 
-
-@media only screen and (min-width:1024px) {
-  .default-form {
-      padding: 5rem 5rem 0rem 5rem; /* arriba | derecha | abajo | izquierda */
-      width: 50rem;
-  }
-
-  .Campo {
-      display: flex;
-      align-items: center;
-      margin: 2rem 0rem;
-      flex-direction: row;
-  }
-  
-  .Campo Input {
-      width: 33rem;
-      font-size: 1.5rem;
-      border: none;
-      border-radius: 5px;
-      padding: 5px;
-  }
-  
-}
-.Boton {
-    padding: .5rem 2rem;
-    border-radius: 5px;
-    position: relative;
-    font-size: 2rem;
-    text-transform: uppercase;
-    margin: 0rem 1rem;
-    border: none;
-    overflow: hidden;
-    cursor: pointer;
-    background: none;
-    font-family: 'Amatic SC', cursive;
+.Acciones a,
+.BtnEditarProducto,
+.DireccionValor,
+.Opcion {
+  color: var(--text);
 }
 
-
-.Boton span
-{
-    color: white;
+.OpcionesCuenta,
+.Direcciones {
+  padding: 1.5rem;
 }
 
-/*Header*/
-.Index{
-    background-image: url(../img/FondoHeaderCelu.jpeg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    min-height:45rem;
-    background-position: 0px 0px;
-}
-.ContenedorHeader{
-    display: flex;
-    flex-direction: column;
-    height: 45rem;
-    background-color: gray;
-    position: relative;
+.MiCuenta {
+  width: min(700px, calc(100% - 2rem));
+  margin: 4rem auto;
 }
 
-.ContenedorHeader::before{
-    content: '';
-    background-color: rgba(0, 0, 0, 0.614);
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
+.MiCuenta h2 {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  color: var(--text);
 }
 
-/*Barra*/
-.Barra{
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    z-index: 2;
-}
-.BarraInicio{
-    background-color: rgba(0, 0, 0, 0.614);
-}
-
-.Index .BarraInicio{
-    background-color: rgba(0, 0, 0, 0.614);
-}
-
-.BarraCom {
-    background-color: var(--Azul);
-}
-.Barra h1{
-    color: white;
-    font-size: 3rem;
-    margin: 2rem 1rem;
-
-}
-.MenuNavegacion{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top:1rem ;
-}
-.MenuNavegacion .menuLink{
-    color: white;
-    font-size: 2rem;
-}
-.liMenu{
-    padding: 0.5rem;
-}
-.Submenu {
-    display: none;
-}
-.Titulo{
-    font-size: 3rem;
-    text-transform: uppercase;
-    margin: 4rem auto;
-    width: 90%;
-    color: white;
-    line-height: 3rem;
-    z-index: 2;
-}
-
-@media only screen and (min-width:1024px){
-    .ContenedorHeader{
-        justify-content: space-between;
-    }
-    .Barra{
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        padding: 0rem 1.5rem;
-    }
-    .Barra h1{
-        font-size: 4rem;
-    }
-    .MenuMostrar {
-        display: none!important;
-    }
-    .MenuNavegacion{
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        transition: transform 1s;
-        margin-top: 1rem;
-        transform: translate(0);
-    }
-    .MenuNavegacion a:hover{
-        color: black;
-        transition: color .5s;
-    }
-    .CerrarSesionMov{
-        display: none;
-      }
-      .Submenu {
-        display: none;
-        position: absolute;
-        top: 2rem;
-        padding: 0.5rem 3px;
-    }
-    .Submenu a{
-        color: white;
-        font-size: 1.5rem;
-    }
-    li:hover .Submenu {
-        opacity: 100;
-        display: block;
-        transition: opacity .5s;
-    }
-    .Titulo{
-        font-size: 5rem;
-        margin: 15rem 4rem;
-        width: 90%;
-        line-height: 5rem;
-    }
-}
-
-/* Sobre Nosotros */
-.SeccionNosotros {
-    margin-top: 5rem;
-    position: relative;
-}
-.ImagenesNosotros {
-    margin-bottom: 9rem;
-}
-.Img1 {
-    width: 100%;
-    border-radius: 1rem;
-    -webkit-box-shadow: -1px 5px 26px -1px #5a5a5a;
-    box-shadow: -1px 5px 26px -1px #5a5a5a;
-}
-.Img2 {
-    position: absolute;
-    width: 50vw;
-    height: 50vw;
-    border-radius: 50%;
-    top: 8rem;
-    left: 11rem;
-    -webkit-box-shadow: 6px 10px 27px -1px #524848;
-    box-shadow: 6px 10px 27px -1px #524848;
-}
-.SobreNosotros h2 {
-    font-size: 3.5rem;
-    text-align: center;
-    position: relative;
-}
-.SobreNosotros p {
-    text-align: center;
-    font-size: 1.5rem;
-    line-height: 2.4rem;
-}
-
-@media only screen and (min-width:1024px) {
-    .ContenedorNosotros {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10rem;
-    }
-    .ImagenesNosotros:hover .Img1 {
-        border-radius: 5rem;
-        transform: scale(1.1);
-        transition: all 0.4s ease 0s;
-    }
-    .ImagenesNosotros:hover .Img2 {
-        border-radius: 1rem;
-        transform: scale(1.1);
-        transition: all 1s ease 0s;
-    }
-    .Img1 {
-        width: 35rem;
-        border-radius: 1rem;
-        transition: all 1s;
-    }
-    .Img2 {
-        width: 20rem;
-        height: 20rem;
-        top: 7rem;
-        left: 25rem;
-        transition: all 1s;
-    }
-}
-
-/* Seccion Celulares */
-.Celulares h2{
-    font-size: 3rem;
-    text-align: center;
-    color: black;
-    padding: 1rem;
-}
-.ContenedorProductos {
-    background-color:#252323;
-    padding: 1rem;
-    -webkit-box-shadow: -1px 5px 26px -1px var(--Azul);
-    box-shadow: -1px 5px 26px -1px var(--Azul);
-}
-.ContenedorProductos h3 {
-    font-size: 2.2rem;
-    text-align: center;
-    color: white;
-    border-bottom: 5px solid white;
-    border-radius: 1px;
-    padding-bottom: 1rem;
-    width: 90%;
-    margin: 1rem auto;
-}
-.ContenedorProductos p {
-    text-align: center;
-    margin: 0 auto;
-    width: 70%;
-    font-size: 1.2rem;
-    line-height: 2.1rem;
-    color: white;
-}
-.Producto {
-    transition: all .5s;
-    margin: 2rem 0rem;
-    position: relative;
-    cursor: pointer;
-}
-.Producto img {
-    border-radius: 1rem;
-    transition: -webkit-transform 1s;
-}
-@media only screen and (min-width:1024px){
-    .ContenedorProductos {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 3rem;
-    }
-    .Producto:hover {
-        transform: scale(1.1);
-        transition: all .5s;
-    }
-
-    .Producto img {
-        border-radius: 1rem;
-        transition: -webkit-transform 1s;
-    }
-}
-
-/* Seccion Galeria */
-.ContenedorImagenes{
-    display: grid;
-    grid-template-columns: repeat(2,1fr);
-    gap: 1.5rem;
-  }
-  .ImagenGal{
-    transition: transform 1s;
-    border-radius: 1rem;
-    cursor: pointer;
-  }
-
-  @media only screen and (min-width:1024px){
-    .ContenedorImagenes{
-        grid-template-columns: repeat(3,1fr);
-      }
-
-      .ImagenGal:hover{
-        transform: scale(1.1);
-        transition: transform 1s;
-      }
-  }
-
-  /* Contenedor Pantalla */
-  .ContenedorPantalla {
-    position: relative;
-    height: auto;
-}
-.parallax::before {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: 50%;
-}
-.ContenedorPantalla::before {
-    content: '';
-    background-image: url('/img/FondoHeaderCelu.jpeg');
-    background-attachment: fixed;
-}
-.BackgroundPantalla {
-    background-color: #00000050;
-    z-index: 1;
-    position: relative;
-}
-.ContenedorTexto {
-    position: relative;
-    text-align: center;
-}
-.ContenedorTexto h2 {
-    font-size: 4rem;
-    line-height: 8rem;
-    color: white;
-    margin: 0 auto;
-}
-@media only screen and (min-width:1024px) {
-    .ContenedorTexto h2 {
-        font-size: 6rem;
-        line-height: 10rem;
-        width: 50%;
-    }
-}
-
-/* Informacion */
-.InformacionDiv {
-    background-color: #252323;
-    border-radius: 1rem;
-    margin: 2rem 0rem;
-    display: flex;
-    justify-content: center;
-}
-.Borde {
-    border: 1px solid white;
-    margin: .5rem;
-    border-radius: 10px;
-    width: 22.7rem;
-}
-.InformacionDiv p {
-    text-align: center;
-    font-size: 1.5rem;
-    text-transform: uppercase;
-    display: flex;
-    flex-direction: row-reverse;
-    align-items: center;
-    justify-content: center;
-    color: white;
-}
-.InformacionDiv p i {
-    font-size: 2.5rem;
-    padding-right: 1rem;
-}
-@media only screen and (min-width:1300px){
-    .ContInfoTortas {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 2rem;
-    }
-    .InformacionDiv {
-        margin: 1rem 0rem;
-    }
-}
-
-/***** Tienda *****/
-            
-.OjoProducto {
-    display: flex;
-    justify-content:center;
-    opacity: 0;
-    transition: all 1s;
-    position: relative;
-    top: 11rem;
-}
-
-.OjoProducto i {
-    font-size: 2.5rem;
-    padding: 1rem;
-    color: black;
-    background: white;
-    border-radius: 50%;
-}
-
-.ImgProducto:hover .OjoProducto {
-    opacity: 1;
-}
-
-.ImgProducto {
-    cursor: pointer;
-    transition: transform 1s;
-}
-
-.Productos .ContenidoProducto .ProductoNombre {
-    font-size: 2rem;
-    line-height: 3rem;
-}
-
-.PrecioProducto span {
-    font-size: 2.2rem;
-}
-
-.PrecioProducto {
-    font-size: 2.5rem;
-}
-
-.ContenidoProducto {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.BtnProductos {
-    margin: 1.5rem 0rem;
-    color: #631a8b;
-}
-
-@media only screen and (min-width:1024px) {
-    .ImgProducto:hover {
-        transform: scale(1.05);
-    }
-    .ImgProducto::before {
-        content: '';
-        transition: all .5s;
-    }
-    .Productos .ImgProducto:hover::before {
-        content: '';
-        width: 100%;
-        height: 98%;
-        border-radius: 2rem;
-        position: absolute;
-        top: 0px;
-        left: 0px;
-        box-shadow: 0 0 1rem 0 rgb(0 0 0 / 20%);
-        background-color: rgba(255, 255, 255, .15);
-        backdrop-filter: blur(5px);
-        transition: all .5s;
-    }
-}
-
-
-/* PRODUCTO INDIVIDUAL */
-.ImagenCont .Imagen{
-    position: relative;
-    height: 22rem;
-    background: #b5b1b1;
-    border-radius: 1rem;
-    margin: 1rem;
-}
-.SliderImg  {
-    position: absolute;
-    top: 0;
-    opacity: 0;
-}
-
-.Imagen .show{
-    opacity: 1;
-}
-
-.CambiarFoto{
-    display: flex;
-    justify-content: space-evenly;
-    margin-top: 3rem;
-}
-.BtnCambiar{
-    width: 5rem;
-    height: .5rem;
-    background-color: rgb(110, 110, 110);
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.InformacionTarta{
-    position: relative;
-}
-
-.InformacionTarta .PrecioNombre .NombreTarta{
-    color: white;
-    font-size: 4rem;
-    margin-top: 40px;
-    margin-bottom: -41px;
-    text-align: left;
-}
-
-.PrecioProducto{
-    color: white;
-    font-size: 4rem;
-}
-.PrecioProducto span {
-    font-size: 3.2rem;
-}
-.Cantidad {
-    margin-top: -30px;
-    display: flex;
-}
-.Cantidad label{
-    font-size: 2rem;
-}
-.AgregarCarrito {
-    text-align: center;
-}
-.inputCantidad {
-    margin: 0rem 1rem;
-}
-.BtnEditarProducto {
-    position: absolute;
-    left: 93%;
-    top: 0%;
-    font-size: 2rem;
-    color: black;
-}
-
-@media only screen and (min-width:1024px) {
-    .ContenedorProducto{
-        display: grid;
-        grid-template-columns: repeat(2,1fr);
-        gap: 6rem;
-    }
-    .ImagenCont .Imagen {
-        height: 32rem;
-        width: 32rem;
-        background: none;
-    }
-    .AgregarCarrito {
-        margin: 4rem;
-    }
-    .AgregarCarrito .Boton {
-        font-size: 3rem;
-    }
-}
-
-
-/********** Fin Tienda  ************/
-
-/****** Mi Cuenta ******/
 .OpcionesCuenta {
-    background-color:rgba(0, 0, 0, 0.614);
-    width: 80%;
-    margin: 0 auto;
-    padding: 1rem;
-    border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.OpcionesCuenta a {
+  text-decoration: none;
 }
 
 .OpcionesCuenta .Opcion {
-    display: flex;
-    align-items: center;
-    padding: 2rem;
-    border-bottom: 2px solid white;
-    cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 1.1rem 1.4rem;
+  background: var(--bg-surface);
+  border-radius: 1.1rem;
+  border: 1.5px solid var(--border);
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
 }
 
-.Opcion i {
-    font-size: 2rem;
-    color: white;
-    border: 1px solid;
-    padding: 7px;
-    border-radius: 50%;
+.OpcionesCuenta .Opcion:hover {
+  border-color: var(--primary);
+  background: var(--primary-light);
+  box-shadow: 0 4px 16px rgba(249, 115, 22, 0.10);
+}
+
+.Icono {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 50%;
+  background: var(--primary-light);
+  color: var(--primary);
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  transition: background 0.2s, color 0.2s;
+}
+
+.OpcionesCuenta .Opcion:hover .Icono {
+  background: var(--primary);
+  color: #ffffff;
 }
 
 .Texto {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.Texto span:first-child {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.DatosMas {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  font-weight: 400;
 }
 
 .Opcion span {
-    font-size: 2rem;
-    padding: 1rem;
-    color: white;
-}
-
-.Opcion .DatosMas {
-    font-size: 20px;
-    color:gray;
-    margin: -1rem 0rem;
-}
-
-
-
-@media only screen and (min-width:1024px) {
-  .OpcionesCuenta {
-      width: 50%;
-      margin: 0 auto;
-      padding: 1rem;
-      border-radius: 10px;
-  }
-}
-
-
-/*** Direcciones ***/
-
-.DireccionH3
-{
-  font-size: 2rem;
-}
-
-.Direcciones {
-    background-color: rgba(0, 0, 0, 0.614);
-    width: 80%;
-    margin: 0 auto;
-    padding: 1rem;
-    border-radius: 10px;
-}
-
-.DireccionValor{
-  display: block;
-  margin: 0rem auto;
   font-size: 1rem;
-  color: white;
-  background: #021c46;
+}
+
+.DireccionValor {
+  display: block;
+  padding: 1rem 1.25rem;
+  margin-top: 1rem;
+  border-radius: 0.9rem;
+  border: 1.5px solid var(--border);
+  background: var(--bg-soft);
+  color: var(--text);
+}
+
+/* default-form centrado solo cuando está suelto (login, registro, etc.) */
+.Contacto .default-form,
+.MiCuenta > .default-form {
+  width: min(620px, 100%);
+  margin: 0 auto;
+}
+
+/* dentro de tarjetas ocupa el 100% */
+.DatosComprador .default-form,
+.DatosdeEntrega .default-form {
+  width: 100%;
+  box-shadow: none;
+  border: none;
+  padding: 0;
+  background: transparent;
+}
+
+/* ─── TIENDA (clases propias de Tienda.pug) ─── */
+.Tienda {
+  padding: 3rem 0 5rem;
+  width: min(1140px, calc(100% - 2rem));
+  margin: 0 auto;
+}
+
+.Tienda h2 {
+  font-size: clamp(1.8rem, 2.5vw, 2.8rem);
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: 2.5rem;
+}
+
+.Productos {
+  background: #ffffff;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  border: 1.5px solid var(--border);
+  box-shadow: var(--shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.Productos:hover {
+  transform: translateY(-7px);
+  border-color: var(--primary);
+  box-shadow: 0 16px 48px rgba(249, 115, 22, 0.16);
+}
+
+.ImgProducto {
+  position: relative;
+  overflow: hidden;
+  background: var(--bg-soft);
+}
+
+.ImgProducto a.OjoProducto {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  z-index: 2;
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid var(--border);
+  display: grid;
+  place-items: center;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  box-shadow: var(--shadow);
+  transition: background 0.2s, color 0.2s;
+}
+
+.ImgProducto a.OjoProducto:hover {
+  background: var(--primary);
+  color: #ffffff;
+  border-color: var(--primary);
+}
+
+.ImagenProducto {
+  width: 100%;
+  height: 20rem;
+  object-fit: contain;
+  padding: 1.5rem;
+  background: var(--bg-soft);
+  transition: transform 0.4s ease;
+}
+
+.Productos:hover .ImagenProducto {
+  transform: scale(1.04);
+}
+
+.ContenidoProducto {
+  padding: 1.25rem 1.4rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  flex: 1;
+}
+
+.ProductoNombre {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.PrecioProducto {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--primary);
+  margin: 0 0 0.75rem;
+}
+
+.BtnProductos {
+  width: 100%;
+  border-radius: 999px;
+  background: var(--primary);
+  color: #ffffff;
+  font-weight: 700;
+  padding: 0.75rem 1rem;
+  font-size: 0.9rem;
+  margin-top: auto;
+}
+
+.BtnProductos:hover {
+  background: var(--primary-dark);
+  box-shadow: var(--shadow-orange);
+}
+
+.ContenedorProductos {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+}
+
+/* ─── LOGIN / FORMULARIOS ─── */
+.Contacto {
+  min-height: calc(100vh - 200px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 1rem;
+}
+
+.Contacto h2 {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.CrearCuenta {
+  width: 100%;
+  max-width: 480px;
+}
+
+.CrearCuenta .default-form {
+  width: 100%;
+  margin: 0;
+}
+
+/* ─── PÁGINA CARRITO COMPLETO ─── */
+section.Carrito {
+  display: block;
+  position: static;
+  width: min(1100px, calc(100% - 2rem));
+  margin: 3rem auto 5rem;
+  height: auto;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+section.Carrito h2 {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: 2rem;
+}
+
+.TablaCarrito {
+  width: 100%;
+  border-collapse: collapse;
+  background: #ffffff;
+  border-radius: 1.25rem;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+}
+
+.TablaCarrito thead tr {
+  background: var(--bg-soft);
+  border-bottom: 2px solid var(--border);
+}
+
+.TablaCarrito thead th {
+  padding: 1rem 1.25rem;
+  text-align: left;
+  font-size: 0.82rem;
+  font-weight: 700;
   text-transform: uppercase;
-  cursor: pointer;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+}
+
+.TablaCarrito tbody .ProductoIn {
+  border-bottom: 1px solid var(--border);
+  transition: background 0.2s;
+}
+
+.TablaCarrito tbody .ProductoIn:last-child {
+  border-bottom: none;
+}
+
+.TablaCarrito tbody .ProductoIn:hover {
+  background: var(--bg-soft);
+}
+
+.TablaCarrito td {
+  padding: 1rem 1.25rem;
+  vertical-align: middle;
+}
+
+.ImagenTabla {
+  width: 5rem;
+  height: 5rem;
+  object-fit: contain;
+  border-radius: 0.65rem;
+  background: var(--bg-soft);
+  padding: 0.35rem;
+}
+
+.TablaCarrito #Titulo {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--text);
+}
+
+.TablaCarrito .Precio {
+  font-weight: 700;
+  color: var(--primary);
+  font-size: 1rem;
+}
+
+.TablaCarrito .TotalPrecio {
+  font-weight: 700;
+  color: var(--text);
+  font-size: 1rem;
+}
+
+.TablaCarrito .CartCant input {
+  width: 4.5rem;
+  padding: 0.45rem 0.65rem;
+  border: 2px solid var(--border);
+  border-radius: 0.5rem;
+  font-size: 0.9rem;
+  text-align: center;
+  color: var(--text);
+  background: var(--bg-soft);
+  transition: border-color 0.2s;
+}
+
+.TablaCarrito .CartCant input:focus {
+  outline: none;
+  border-color: var(--primary);
+  background: #fff;
+}
+
+.TablaCarrito .CartBtn {
+  white-space: nowrap;
+}
+
+.BtnEliminar {
+  padding: 0.45rem 1rem !important;
+  font-size: 0.8rem !important;
+  border-radius: 0.5rem !important;
+  background: #dc2626 !important;
+  color: #ffffff !important;
+  border: none !important;
+  font-weight: 600 !important;
+  box-shadow: none !important;
+}
+
+.BtnEliminar:hover {
+  background: #b91c1c !important;
+  color: #ffffff !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.TablaCarrito tfoot .SubtotalCar {
+  padding: 1.25rem;
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--text);
+  border-top: 2px solid var(--border);
+  background: var(--bg-soft);
+}
+
+.TablaCarrito tfoot h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--text);
+  display: inline;
+}
+
+.AccionesCarrito {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.AccionesCarrito a {
+  text-decoration: none;
+}
+
+.AccionesCarrito .Boton {
+  padding: 0.85rem 2rem;
+}
+
+.AccionesCarrito a:first-child .Boton {
+  background: var(--bg-soft);
+  color: var(--text);
+  border: 1.5px solid var(--border);
+}
+
+.AccionesCarrito a:first-child .Boton:hover {
+  background: var(--border);
+  box-shadow: none;
+}
+
+/* ─── DROPDOWN NAVEGACIÓN ─── */
+.liMenu {
+  position: relative;
+  list-style: none;
+}
+
+.Submenu {
+  display: none;
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  left: 0;
+  min-width: 160px;
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: 0.85rem;
+  box-shadow: var(--shadow-lg);
+  padding: 0.5rem 0;
+  z-index: 200;
+  list-style: none;
+  margin: 0;
+}
+
+.liMenu:hover .Submenu {
+  display: block;
+}
+
+.Submenu li a {
+  display: block;
+  padding: 0.65rem 1.1rem;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--text-soft);
+  transition: background 0.15s, color 0.15s;
+}
+
+.Submenu li a:hover {
+  background: var(--primary-light);
+  color: var(--primary-dark);
+}
+
+/* ─── CARRITO ICONO ─── */
+.BtnCarrito {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 50%;
+  background: var(--bg-soft);
+  border: 1.5px solid var(--border);
+  color: var(--text);
+  font-size: 1rem;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+  text-decoration: none;
+}
+
+.BtnCarrito:hover {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #ffffff;
+}
+
+.CantidadProductos {
+  position: absolute;
+  top: -0.35rem;
+  right: -0.35rem;
+  min-width: 1.2rem;
+  height: 1.2rem;
+  border-radius: 999px;
+  background: var(--primary);
+  color: #ffffff;
+  font-size: 0.68rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 0.25rem;
+  line-height: 1;
+  border: 2px solid #ffffff;
+}
+
+/* ─── PASARELA DE PAGO / FINALIZAR COMPRA ─── */
+section.FinalizarCompra {
+  width: min(1100px, calc(100% - 2rem));
+  margin: 3rem auto 5rem;
+}
+
+section.FinalizarCompra h2 {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: 1.5rem;
+}
+
+.ContenedorDatosCompra {
+  display: grid;
+  gap: 2rem;
+}
+
+.DireccionDatos h2 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 1rem;
+}
+
+.TablaDireccion {
+  width: 100%;
+  border-collapse: collapse;
+  background: #ffffff;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+  font-size: 0.9rem;
+}
+
+.TablaDireccion thead tr {
+  background: var(--bg-soft);
+  border-bottom: 2px solid var(--border);
+}
+
+.TablaDireccion thead th {
+  padding: 0.85rem 1rem;
+  text-align: left;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+}
+
+.TablaDireccion tbody td {
+  padding: 0.85rem 1rem;
+  color: var(--text);
+  border-bottom: 1px solid var(--border);
+}
+
+.TablaDireccion tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.AccionesCarrito.FormularioCompra,
+section.FinalizarCompra .AccionesCarrito {
+  margin-top: 1.5rem;
+}
+
+/* Botón móvil de eliminar (icono) — oculto en desktop */
+.BtnMovil {
+  display: none !important;
+}
+
+/* ─── DATOS DE ENTREGA ─── */
+section.DatosEntrega {
+  width: min(1100px, calc(100% - 2rem));
+  margin: 3rem auto 5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+section.DatosEntrega h2 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: 1.25rem;
+}
+
+.DatosComprador,
+.DatosdeEntrega {
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: 1.25rem;
+  padding: 2rem;
+  box-shadow: var(--shadow);
   width: 100%;
 }
 
-.DireccionValor .DireccionAgregar{
-  color: #aba9a9;
+/* Dos columnas solo cuando existen AMBAS secciones */
+@media (min-width: 900px) {
+  section.DatosEntrega:has(.DatosdeEntrega) {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  section.DatosEntrega:has(.DatosdeEntrega) .DatosComprador {
+    flex: 0 0 360px;
+  }
+
+  section.DatosEntrega:has(.DatosdeEntrega) .DatosdeEntrega {
+    flex: 1;
+  }
 }
 
-.IconoDir {
-    font-size: 1.8rem;
-    padding: 0 1rem;
+select.DireccionValor {
+  width: 100%;
+  padding: 0.85rem 1.1rem;
+  border-radius: 0.75rem;
+  border: 2px solid var(--border);
+  background: var(--bg-soft);
+  color: var(--text);
+  font-size: 0.95rem;
+  font-family: inherit;
+  cursor: pointer;
+  transition: border-color 0.2s;
+  margin-bottom: 1rem;
+}
+
+select.DireccionValor:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(249, 115, 22, 0.10);
+}
+
+.DireccionAcc {
+  margin-top: 1.5rem;
+}
+
+/* ─── TIPO DE ENVÍO ─── */
+.OpcionEnvio {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.1rem 1.25rem;
+  background: var(--bg-soft);
+  border-radius: 0.9rem;
+  border: 2px solid var(--border);
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+  margin: 0.75rem 0;
+}
+
+.OpcionEnvio:has(.Radio:checked) {
+  border-color: var(--primary);
+  background: var(--primary-light);
+}
+
+.Radio {
+  margin-top: 0.25rem;
+  width: 1.1rem;
+  height: 1.1rem;
+  accent-color: var(--primary);
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.Informacion {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.Informacion label {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--text);
+  cursor: pointer;
+}
+
+.PEnvio {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ─── DIRECCIONES ─── */
+.Direcciones {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
 }
 
 .divDireccion {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  padding: 1.1rem 1.4rem;
+  background: #ffffff;
+  border: 1.5px solid var(--border);
+  border-radius: 1.1rem;
+  box-shadow: var(--shadow);
+  transition: border-color 0.2s;
+  position: relative;
+}
+
+.divDireccion:hover {
+  border-color: var(--primary);
+}
+
+.IconoDir {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 50%;
+  background: var(--primary-light);
+  color: var(--primary);
+  font-size: 1rem;
+  flex-shrink: 0;
 }
 
 .TextoDireccion {
-    display: flex;
-    align-items: baseline;
-    color: white;
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  flex: 1;
 }
 
 .Texto .Calle {
-    font-size: 2rem;
-    text-transform: uppercase;
-    color: white;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--text);
+  margin: 0 0 0.2rem;
 }
 
 .TextoAbajo {
-    margin-top: -1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
 }
 
 .TextoAbajo p {
-    margin: -2px 0rem;
-    color: rgb(211, 211, 211);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin: 0;
 }
 
-.BtnDireccionMenu{
+.BtnDireccionMenu {
   position: relative;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.BotonMenDireccion {
+  cursor: pointer;
+  padding: 0.5rem 0.65rem;
+  border-radius: 0.5rem;
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  transition: background 0.2s, color 0.2s;
+}
+
+.BotonMenDireccion:hover {
+  background: var(--bg-soft);
+  color: var(--text);
 }
 
 .BtnDireccion {
   position: absolute;
+  top: calc(100% + 0.4rem);
+  right: 0;
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: 0.85rem;
+  box-shadow: var(--shadow-lg);
+  padding: 0.5rem;
   display: flex;
-  align-items: center;
   flex-direction: column;
-  background-color: white;
-  z-index: 3;
-  top: 1rem;
-  left: -12rem;
+  gap: 0.35rem;
+  z-index: 50;
+  min-width: 130px;
 }
 
-.BotonMenDireccion{
-  font-size: 2rem;
-  cursor: pointer;
+.BtnDireccion.Invisible {
+  display: none;
 }
 
-.BtnDireccion button{
-  background-color: white;
-  padding: 2rem;
+.BtnDireccion a {
+  text-decoration: none;
 }
 
-.DireccionVacia{
-  font-size: 3rem;
+.BtnDireccion .Boton {
+  width: 100%;
+  padding: 0.55rem 1rem !important;
+  font-size: 0.82rem !important;
+  border-radius: 0.55rem !important;
   text-align: center;
-  color: white;
-}
-.DireccionVacia p {
-  padding-bottom: 3rem;
-}
-
-.DireccionAcc {
-    margin-top: 3rem;
-    justify-content: space-between;
 }
 
 .divAgregar {
-    padding: 1rem;
+  margin-top: 1rem;
 }
 
-
-
-
-@media only screen and (min-width:1024px) {
-  .Direcciones {
-      width: 50%;
-      margin: 0 auto;
-      padding: 1rem;
-      border-radius: 10px;
-  }
-  
-  .DireccionValor{
-      font-size: 2rem;
-    }
-  
-  .BtnDireccion {
-      background-color:var(--Azul);
-      border:1px solid white
-  }
-
-  .BtnDireccion button{
-      padding: 1rem;
-      background-color: var(--Azul);
-  }
-
+.DireccionH3 {
+  color: var(--text-muted);
+  font-size: 1rem;
+  margin-bottom: 1rem;
 }
 
-
-/******** TIPO ENVIO *********/
-.Envio {
-    justify-content: flex-start;
-    border: 4px solid white;
-    border-radius: 4px;
-  }
-
-   .Informacion{
-    display: flex;
-    align-items: center;
-    padding: 2rem;
-  }
-
-  .Envio input {
-    width: 1rem;
-  }
-  
-  .Envio label {
-    padding: 1.5rem;
-    color: white;
-    font-size: 3rem;
-    line-height: 3rem;
-  }
-  .PEnvio{
-    font-size: 1rem;  
-    color: black;
+/* ─── MIS DATOS / FORMULARIOS INTERNOS ─── */
+section.MiCuenta .default-form {
+  width: 100%;
+  max-width: 600px;
+  margin: 0;
 }
 
+/* ─── RESPONSIVE ─── */
 
-
-@media only screen and (min-width:1024px){
-   .Informacion{
-    display: flex;
-    align-items: flex-end;
-    padding: 2rem;
-  }
-}
-
-
-/******  CARRITO  ******/
-
-/*Ventana Carrito*/
-.TablaCarrito {
-    border: 1px solid #bdbdbd;
-    margin-bottom: 5rem;
-    border-collapse: collapse;
-}
-.TablaCarrito tr th {
-    font-size: 1rem;
-    text-transform: uppercase;
-    padding: 1rem;
-}
-.TablaCarrito tbody tr td {
-    padding-top: 1rem;
-    text-align: center;
-    vertical-align: middle;
-}
-td,
-th {
-    border: 1px solid #bbbaba;
-}
-.TablaCarrito .CartImg {
-  display: none;
-  width: 40rem;
-  padding-left: .5rem;
-}
-.TablaCarrito .CartImg {
-    display: none;
-    width: 40rem;
-    padding-left: .5rem;
-  }
-  
-  .TablaCarrito .CartCant {
-      width: 5rem;
-  }
-  .CartCant input {
-      width: 70%;
-  }
-  .CartBtn .Boton {
-    display: none;
-    width: 5rem;
-    padding: 0.5rem;
-    font-size: 1.5rem;
-  }
-  .DivBotonCar {
-      display: flex;
-  }
-  .CartCant .Boton {
-      padding: 0rem;
-      margin: 1rem;
-  }
-  
-  .SubtotalCar {
-      font-size: 1rem;
-      padding: 0rem 1rem;
-  }
-  .AccionesCarrito{
-    display: flex;
-    justify-content: center;
-  }
-  
-  .AccionesCarrito button{
-    font-size: 1rem;
-  }
-
-  @media only screen and (min-width:1024px) {
-    .TablaCarrito tr th {
-        width: 50rem;
-        font-size: 2rem;
-    }
-    .TablaCarrito tbody tr td {
-        font-size: 1.5rem;
-    }
-    .TablaCarrito .CartImg {
-        display: table-cell;
-  
-    }
-    .BtnMovil{
-        display: none!important;
-    }
-    .CartBtn .Boton {
-        display: table-cell;
-    }
-    .TablaCarrito img {
-        width: 10rem;
-        height: 5rem;
-        text-align: center;
-    }
-    .SubtotalCar {
-        font-size: 2rem;
-        padding: 0rem 2rem;
-    }
-    .AccionesCarrito button{
-        font-size: 2rem;
-      }
-  }
-  
-
-
-/***** Carrito Minimizable *****/
-.CerrarCarrito {
-    font-size: 3rem;
-    display: flex!important;
-    justify-content: flex-end;
-    padding: 5px;
-    color: rgb(202, 23, 23);
-    cursor: pointer;
-}
-
-.Carrito {
-    background-color: white;
-    position: fixed;
-    width: 95vw;
-    height: 100%;
-    top: 0;
-    right: 0rem;
-    z-index: 99;
-    transform: translateX(100%);
-    transition: all 1s;
-}
-
-.CarritoDiv {
-    max-height: 28rem;
-    overflow: hidden;
-    overflow-y: auto;
-}
-
-.ProductosCarrito {
-    display: grid;
-    grid-template-columns: 47% 50%;
-    gap: 50px;
-    margin: 2rem;
-    padding-bottom: 1.3rem;
-    border-bottom: 1px solid #FF2BE6;
-    position: relative;
-    align-items: center;
-}
-
-.EliminarProducto {
-    position: absolute;
-    font-size: 1.5rem;
-    color: rgb(202, 23, 23);
-    ;
-    top: -24px;
-    left: 100%;
-    cursor: pointer;
-}
-
-.ProductosCarrito img {
-    margin-bottom: 2rem;
-    border-radius: 6px;
-}
-
-.BorrarProducto {
-    position: absolute;
-    top: -2px;
-    left: -1px;
-    color: rgb(202, 23, 23);
-}
-
-.CarritoContenido {
-    display: flex;
+/* Tablet y mobile: menú */
+@media (max-width: 840px) {
+  .ContenedorHeader {
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
+    gap: 0.85rem;
+    padding: 1rem 1rem 2rem;
+  }
+
+  .SearchBar {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .Barra {
+    width: 100%;
+  }
+
+  .MenuNavegacion {
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .Titulo {
+    font-size: clamp(2rem, 8vw, 3.5rem);
+    margin-top: 1.5rem;
+  }
 }
 
-.CarritoContenido .ProductoNombre {
+/* Mobile */
+@media (max-width: 600px) {
+  /* Header */
+  .ContenedorHeader {
+    padding: 1rem 1rem 1.5rem;
+  }
+
+  .Brand h1 {
+    font-size: 1.4rem;
+  }
+
+  .menuLink {
+    font-size: 0.8rem;
+    padding: 0.45rem 0.85rem;
+  }
+
+  /* Secciones */
+  .Seccion {
+    padding: 3rem 0;
+  }
+
+  /* Home */
+  .ContenedorNosotros {
+    grid-template-columns: 1fr;
+  }
+
+  .SobreNosotros h2 {
+    font-size: 1.8rem;
+  }
+
+  .Titulo {
+    font-size: clamp(1.8rem, 9vw, 3rem);
+  }
+
+  /* Productos */
+  .ContenedorProductos {
+    grid-template-columns: 1fr;
+  }
+
+  /* Galería */
+  .ContenedorImagenes {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .ImgGal, .ImagenGal {
+    height: 180px;
+  }
+
+  /* Info tortas */
+  .ContInfoTortas {
+    grid-template-columns: 1fr;
+  }
+
+  /* Parallax */
+  .ContenedorTexto h2 {
+    font-size: clamp(1.8rem, 7vw, 3rem);
+  }
+
+  /* Mi cuenta */
+  .MiCuenta {
+    margin: 2rem auto;
+  }
+
+  /* Carrito tabla */
+  .TablaCarrito thead {
+    display: none;
+  }
+
+  .TablaCarrito tbody .ProductoIn {
+    display: grid;
+    grid-template-columns: 5rem 1fr auto;
+    grid-template-rows: auto auto;
+    gap: 0.5rem;
+    padding: 0.75rem;
+    align-items: center;
+  }
+
+  .TablaCarrito td {
+    padding: 0.25rem 0.35rem;
+  }
+
+  .TablaCarrito .CartBtn .Boton {
+    display: none;
+  }
+
+  /* BtnMovil siempre oculto — se usa solo en JS */
+
+  /* Datos de entrega en mobile */
+  section.DatosEntrega {
+    flex-direction: column;
+    margin: 1.5rem auto 3rem;
+  }
+
+  .DatosComprador,
+  .DatosdeEntrega {
+    padding: 1.25rem;
+  }
+
+  /* Pasarela */
+  section.FinalizarCompra {
+    margin: 1.5rem auto 3rem;
+  }
+
+  /* Acciones carrito */
+  .AccionesCarrito {
+    flex-direction: column;
+  }
+
+  .AccionesCarrito .Boton,
+  .AccionesCarrito a {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* Formularios */
+  .default-form {
+    padding: 1.5rem 1.1rem;
+  }
+
+  .Contacto {
+    padding: 2rem 0;
+  }
+
+  /* Sección carrito completo */
+  section.Carrito {
+    margin: 1.5rem auto 3rem;
+  }
+
+  section.Carrito h2 {
     font-size: 1.5rem;
+  }
 }
-
-.CarritoContenido .PrecioProducto {
-    font-size: 1.7rem;
-}
-
-.CarritoContenido .CantidadCarrito {
-    display: block;
-    font-size: 10px;
-    border: 1px solid;
-}
-
-.InformacionCarrito {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    margin-top: -1.5rem;
-}
-
-.CarritoTotal {
-    margin-top: -2rem;
-}
-
-.VerCarritoDiv {
-    text-align: center;
-}
-
-.verCarrito {
-    color: black;
-    font-size: 2rem;
-}
-
-.SubTotal {
-    font-size: 2.5rem;
-    text-align: center;
-}
-
-@media only screen and (min-width:728px) {
-    .CarritoContenido .ProductoNombre {
-        font-size: 3.5rem;
-    }
-    .CarritoContenido .PrecioProducto {
-        font-size: 3.7rem;
-    }
-    .CarritoContenido .CantidadCarrito {
-        padding: 0.5rem;
-        font-size: 1rem;
-    }
-    .CarritoDiv {
-        max-height: 44rem;
-    }
-}
-
-@media only screen and (min-width:1024px) {
-    .Carrito {
-        width: 19.3rem;
-    }
-    .CarritoDiv {
-        max-height: 24rem;
-    }
-    .ProductosCarrito {
-        gap: 25px;
-        grid-template-columns: 41% 53%;
-    }
-    .CarritoContenido .ProductoNombre {
-        font-size: 1.5rem;
-        margin-top: -5px;
-    }
-    .CarritoContenido .PrecioProducto {
-        font-size: 1.7rem;
-        margin-top: -22px;
-    }
-    .CarritoContenido .CantidadCarrito {
-        font-size: .5rem;
-    }
-    .EliminarProducto {
-        top: -27px;
-    }
-}
-/****** Fin Carrito ******/
-
-
-/* Footer */
-footer{
-    text-align: center;
-    background-color: rgba(0, 0, 0, 0.614);
-}
-footer p{
-    font-size: 2rem;
-    padding: 1rem;
-    margin-top: 5rem;
-    margin-bottom:0 ;
-}
-

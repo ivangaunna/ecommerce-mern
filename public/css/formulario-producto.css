@@ -1,81 +1,91 @@
-/* CSS Encapsulado para el Formulario de Crear Producto */
 .formulario-producto {
     max-width: 600px;
-    margin-top: 20px;
-    margin:  auto;
-    padding: 20px;
-    background-color: rgba(0, 0, 0, 0);
-    border-radius: 8px;
-
+    margin: 24px auto;
+    padding: 2rem;
+    background: #ffffff;
+    border-radius: 1.25rem;
+    border: 1px solid rgba(15, 23, 42, 0.10);
+    box-shadow: 0 4px 20px rgba(15, 23, 42, 0.08);
 }
 
 .formulario-producto h2 {
     text-align: center;
-    margin-bottom: 20px;
-    font-size: 24px;
-    color: #333;
+    margin-bottom: 1.5rem;
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: #0f172a;
 }
 
 .formulario-producto .campo {
-    margin-bottom: 15px;
+    margin-bottom: 1rem;
 }
 
 .formulario-producto label {
     display: block;
-    font-size: 16px;
-    font-weight: bold;
-    margin-bottom: 5px;
-    color: #555;
+    font-size: 0.88rem;
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+    color: #475569;
 }
 
 .formulario-producto input[type="text"],
 .formulario-producto input[type="number"] {
     width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+    padding: 0.8rem 1rem;
+    font-size: 0.95rem;
+    border: 2px solid rgba(15, 23, 42, 0.10);
+    border-radius: 0.65rem;
+    background: #f8fafc;
+    color: #0f172a;
     box-sizing: border-box;
+    transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
 }
 
 .formulario-producto input[type="text"]:focus,
 .formulario-producto input[type="number"]:focus {
-    border-color: #007bff;
+    border-color: #f97316;
     outline: none;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    box-shadow: 0 0 0 4px rgba(249, 115, 22, 0.10);
+    background: #ffffff;
 }
 
 .formulario-producto .campo.enviar {
     text-align: center;
+    margin-top: 1.5rem;
 }
 
 .formulario-producto .boton {
-    padding: 10px 20px;
-    font-size: 16px;
+    padding: 0.8rem 2rem;
+    font-size: 0.95rem;
+    font-weight: 700;
     border: none;
-    border-radius: 4px;
+    border-radius: 999px;
+    background: #f97316;
+    color: #ffffff;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
 }
 
 .formulario-producto .boton:hover {
-    background-color: #0056b3;
+    background: #ea580c;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(249, 115, 22, 0.30);
 }
 
 .formulario-producto .alertas {
-    margin-bottom: 15px;
-    padding: 10px;
-    background-color: #f8d7da;
-    border: 1px solid #f5c2c7;
-    color: #842029;
-    border-radius: 4px;
+    margin-bottom: 1rem;
+    padding: 0.85rem 1.1rem;
+    background: #fff1f2;
+    border: 1px solid #fecdd3;
+    color: #be123c;
+    border-radius: 0.65rem;
 }
 
 .formulario-producto .alerta {
-    margin: 5px 0;
+    margin: 4px 0;
 }
 
 .formulario-producto .alerta.error {
-    font-size: 14px;
-    font-weight: bold;
+    font-size: 0.88rem;
+    font-weight: 600;
 }

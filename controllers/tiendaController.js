@@ -22,22 +22,7 @@ exports.CrearTienda = async (req, res, next) => {
     }
 }
 
-exports.ProductoUrl = async (req, res, next) => {
-    try {
-        const Producto = await productos.findOne({ Imagen: req.params.Url });
-        
-        if (!Producto) {
-            return next(new Error('Producto no encontrado'));
-        }
 
-        res.render('Producto', {
-            Producto
-        });
-    } catch (error) {
-        console.error('Error al buscar producto:', error);
-        next(error);
-    }
-}
 
 exports.formCrearProducto = (req, res) => {
     res.render('CrearProducto', {

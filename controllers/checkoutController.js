@@ -60,7 +60,7 @@ exports.mostrarCheckoutMP = async (req, res, next) => {
             productoBD.forEach(p => {
                 if (id == p._id.toString()) Precio = p.Precio;
             });
-
+             // Agregar producto al carrito
             items.push({
                 id, // Guarda el id para luego
                 title: Productos[i].Nombre,
@@ -105,7 +105,7 @@ exports.mostrarCheckoutMP = async (req, res, next) => {
         console.error("Error al crear preferencia:", error);
         res.status(500).send("Error interno al generar el checkout");
     }
-};
+    };
 
 exports.FinalizarCompra = async (req, res) => {
     try {
@@ -120,7 +120,6 @@ exports.FinalizarCompra = async (req, res) => {
 
         const payment_id = paymentData.payment_id;
         const payment_type = paymentData.payment_type;
-
         // Recupera productos y tipo de envío de la sesión
         const Productos = req.session.productosComprados || [];
         const TipoEnvio = req.session.tipoEnvio || {};
@@ -144,7 +143,6 @@ exports.FinalizarCompra = async (req, res) => {
             Payment_type: payment_type,
             total: total
         });
-
         const ordenGuardada = await orden.save();
 
         // Guardar los detalles del pedido

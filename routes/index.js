@@ -12,6 +12,8 @@ const checkoutController = require('../controllers/checkoutController');
 module.exports = function() {
     //seccion cuentas
     router.get('/', homeController.Home);
+
+    
     router.route('/crear-cuenta')
         .get(usuariosController.formCrearUsuario)
         .post(
